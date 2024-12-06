@@ -58,6 +58,14 @@ module.exports = {
   },
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["--font-urbanist", "sans-serif"],
+      },
+      colors: {
+        eduBlack: "#122023",
+        eduWhite: "#FfFfFF",
+        eduGreen: "#2ECC40",
+      },
       boxShadow: { center: "0 0 12px -2px rgb(0 0 0 / 0.05)" },
       animation: { "pulse-fast": "pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite" },
     },

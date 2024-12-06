@@ -65,7 +65,7 @@ export const Header = () => {
   );
 
   return (
-    <div className="sticky top-0 z-20 justify-between flex-shrink-0 min-h-0 px-0 shadow-md lg:static navbar bg-base-100 shadow-secondary sm:px-2">
+    <div className="sticky top-0 z-20 justify-between flex-shrink-0 min-h-0 px-0 shadow-md lg:static navbar bg-primary shadow-secondary sm:px-2">
       <div className="w-auto navbar-start lg:w-1/2">
         <div className="lg:hidden dropdown" ref={burgerMenuRef}>
           <label
@@ -91,22 +91,21 @@ export const Header = () => {
         </div>
         <Link href="/" passHref className="items-center hidden gap-2 ml-4 mr-6 lg:flex shrink-0">
           <div className="relative flex w-10 h-10">
-            <Image alt="SE2 logo" className="cursor-pointer" fill src="/logo.svg" />
+            <Image alt="edumate logo" className="cursor-pointer" fill src="/logo.png" />
           </div>
           <div className="flex flex-col">
-            <span className="font-bold leading-tight">
-              Edu<span className="text-blue-500">Mate</span>{" "}
-            </span>
+            <span className="font-semibold leading-tight dark:!text-white text-eduBlack">eduMate</span>
           </div>
         </Link>
-        <ul className="hidden gap-2 px-1 lg:flex lg:flex-nowrap menu menu-horizontal">
+        {/* <ul className="hidden gap-2 px-1 lg:flex lg:flex-nowrap menu menu-horizontal">
           <HeaderMenuLinks />
-        </ul>
+        </ul> */}
       </div>
-      <div className="flex-grow mr-4 navbar-end">
+      {/* <div className="flex-grow mr-4 navbar-end">
         <RainbowKitCustomConnectButton />
         <FaucetButton />
-      </div>
+      </div> */}
+      {/* <div>er</div> */}
     </div>
   );
 };
