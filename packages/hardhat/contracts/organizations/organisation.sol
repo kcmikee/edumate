@@ -1,9 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
-import "./interfaces/INFT.sol";
-import "./interfaces/IFactory.sol";
 
-contract Education {
+import "../interfaces/INFT.sol";
+import "../interfaces/IFactory.sol";
+
+contract Organisation {
     /**
      * ============================================================ *
      * --------------------- ORGANIZATION RECORD------------------- *
