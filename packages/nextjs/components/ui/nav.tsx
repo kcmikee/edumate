@@ -23,7 +23,9 @@ const NavHeader = () => {
           </Link>
         ))}
       </nav>
-      <button className="px-4 py-2 text-white rounded-full bg-eduBlack hover:bg-eduBlack/90">Launch app</button>
+      <a href="/programme" className="px-4 py-2 text-white rounded-full bg-eduBlack hover:bg-eduBlack/90">
+        Launch app
+      </a>
     </header>
   );
 };

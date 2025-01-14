@@ -80,7 +80,7 @@ const Home: NextPage = () => {
           {benefits.map((benefit, index) => (
             <div
               key={index}
-              className="flex flex-col items-center justify-center px-5 py-8 border rounded-lg border-[#525FE1]/15 hover:bg-white hover:shadow-md transition-colors duration-300 ease-in-out hover:border-white"
+              className="flex flex-col items-center justify-center px-5 py-8 border rounded-lg border-[#525FE1]/15 hover:bg-white dark:hover:bg-gray-800 hover:shadow-md transition-colors duration-300 ease-in-out hover:border-white"
             >
               <Image src={benefit.image} alt={benefit.title} height={100} width={100} className="object-contain" />
               <h4 className="text-2xl font-bold text-center">{benefit.title}</h4>
