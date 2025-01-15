@@ -1,12 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
 import { FaucetButton, RainbowKitCustomConnectButton } from "../scaffold-eth";
-
-const navlink = [
-  { name: "Home", link: "/" },
-  { name: "About", link: "/" },
-  { name: "Contact", link: "/" },
-];
 
 const NavHeader = () => {
   return (
@@ -17,13 +10,7 @@ const NavHeader = () => {
           <p className="font-semibold">edumate</p>
         </div>
       </div>
-      <nav className="flex items-center gap-7">
-        {navlink.map((_link, index) => (
-          <Link key={index} href={_link.link} className={`hover:text-eduGreen transition-colors duration-100 ease-in`}>
-            {_link.name}
-          </Link>
-        ))}
-      </nav>
+
       <div className="flex items-center gap-4">
         <RainbowKitCustomConnectButton />
         <FaucetButton />

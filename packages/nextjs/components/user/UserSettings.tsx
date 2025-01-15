@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import LoadingModal from "../LoadingModal";
 import { Button } from "~~/components/ui/button";
 import useEditStudentsName from "~~/hooks/nameEditingHooks/useEditStudentsName";
 import useRequestNameCorrection from "~~/hooks/nameEditingHooks/useRequestNameCorrection";
@@ -12,14 +13,14 @@ export default function UserSettings() {
   const fullName = `${firstName} ${lastName}`;
 
   /* started handling the request for the change of name */
-  const { requestNameCorrection } = useRequestNameCorrection();
+  const { requestNameCorrection, isWriting, isConfirming } = useRequestNameCorrection();
 
   const handleRequestNameChange = () => {
     requestNameCorrection();
   };
   /* Ended handling the request for the change of name */
 
-  const { editStudentsName } = useEditStudentsName(fullName);
+  const { editStudentsName, isConfirming: isEditing, isWriting: isWritingName } = useEditStudentsName(fullName);
 
   const handleNameChange = (e: FormEvent) => {
     e.preventDefault();
@@ -93,7 +94,7 @@ export default function UserSettings() {
             <div className="flex flex-col mt-3">
               <Button
                 type="submit"
-                className="transition-all ease-in-out bg-color2 hover:bg-color1"
+                className="text-white transition-all ease-in-out bg-color2 hover:bg-color1"
                 onClick={handleNameChange}
               >
                 Upload Data
@@ -102,6 +103,12 @@ export default function UserSettings() {
           </form>
         </div>
       </main>
+      <LoadingModal
+        isOpen={isWriting || isConfirming || isEditing || isWritingName}
+        onClose={() => {
+          // No-op since modal should only close when operations complete
+        }}
+      />
     </section>
   );
 }

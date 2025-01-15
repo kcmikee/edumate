@@ -3,6 +3,7 @@
 import { FormEvent, useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import certImg from "../../public/admin/certificate.png";
+import LoadingModal from "../LoadingModal";
 import { Button } from "../ui/button";
 import {
   Dialog,
@@ -55,7 +56,7 @@ const IssueCertifcate = ({ apiKey, secretKey }: any) => {
         });
 
         const fileUrl = response.data.IpfsHash;
-        const gateWayAndhash = `https://gray-quiet-egret-248.mypinata.cloud/ipfs/${fileUrl}`;
+        const gateWayAndhash = `https://chocolate-rainy-cuckoo-594.mypinata.cloud/ipfs/${fileUrl}`;
         setImageURI(gateWayAndhash);
         toast.success("Image URI fetched successfully", {
           position: "top-right",
@@ -126,9 +127,9 @@ const IssueCertifcate = ({ apiKey, secretKey }: any) => {
                 Issue Certificate <LiaCertificateSolid className="text-xl" />
               </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
+            <DialogContent className="sm:max-w-[425px] bg-white">
               <DialogHeader>
-                <DialogTitle>edumate+</DialogTitle>
+                <DialogTitle>edumate</DialogTitle>
                 <DialogDescription>Insert certificate image</DialogDescription>
               </DialogHeader>
               <form className="grid w-full gap-4" onSubmit={handleSubmit}>
@@ -183,10 +184,17 @@ const IssueCertifcate = ({ apiKey, secretKey }: any) => {
                 </div>
                 <DialogFooter>
                   <DialogClose asChild>
-                    <Button type="button">Cancel</Button>
+                    <Button type="button" className="text-black">
+                      Cancel
+                    </Button>
                   </DialogClose>
                   <DialogClose asChild>
-                    <Button type="submit" disabled={isConfirming} className="mb-3 bg-color1 md:mb-0">
+                    <Button
+                      onClick={handleSubmit}
+                      type="submit"
+                      disabled={isConfirming}
+                      className="mb-3 text-white bg-color1 md:mb-0"
+                    >
                       Issue Certificate
                     </Button>
                   </DialogClose>
@@ -196,6 +204,13 @@ const IssueCertifcate = ({ apiKey, secretKey }: any) => {
           </Dialog>
         </div>
       </main>
+      <LoadingModal
+        isOpen={isConfirming}
+        onClose={() => {
+          // no-op
+        }}
+        text="Please wait..."
+      />
     </section>
   );
 };

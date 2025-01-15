@@ -28,10 +28,10 @@ const Home: NextPage = () => {
   return (
     <>
       <div className="grid h-screen grid-cols-2">
-        <div className="flex flex-col items-start justify-between px-10 py-4">
+        <div className="flex flex-col items-start justify-between col-span-2 px-5 py-4 lg:px-10 lg:col-span-1">
           <NavHeader />
-          <div className="w-11/12 2xl:w-full">
-            <h1 className="text-5xl font-bold 2xl:text-7xl">
+          <div className="w-full">
+            <h1 className="text-4xl font-bold md:text-5xl 2xl:text-7xl">
               Blockchain-Powered Education:
               <span className="inline text-green-700">Transform Learning, Authenticate Achievements.</span>
             </h1>
@@ -44,7 +44,7 @@ const Home: NextPage = () => {
           </div>
           <div className="h-20"></div>
         </div>
-        <div className="flex items-center justify-center bg-eduBlack">
+        <div className="items-center justify-center hidden lg:flex bg-eduBlack">
           <Image
             src="/edumate-high-resolution-logo-grayscale-transparent.png"
             alt="edu logo"
@@ -56,7 +56,7 @@ const Home: NextPage = () => {
       </div>
       <div className="relative h-[162px] w-full py-[32.56px]">
         <Image src={"/blueBar.png"} fill alt="pattern" className="absolute top-0 z-10" />
-        <div className="h-[97px] !w-9/12 mx-auto z-30 relative grid grid-cols-3">
+        <div className="h-[97px] w-11/12 lg:!w-9/12 mx-auto z-30 relative grid grid-cols-3">
           <div className="flex flex-col items-center justify-center border-r">
             <h4 className="text-5xl font-bold text-white">1</h4>
             <h6 className="text-white">Total Organisations</h6>
@@ -76,7 +76,7 @@ const Home: NextPage = () => {
           <span className="inline text-green-700">Why we are best</span> from others?
         </h4>
 
-        <div className="grid w-10/12 grid-cols-3 gap-8 mx-auto mt-16">
+        <div className="grid w-10/12 grid-cols-1 gap-8 mx-auto mt-16 md:grid-cols-3">
           {benefits.map((benefit, index) => (
             <div
               key={index}

@@ -37,7 +37,6 @@ import useOpenAttendance from "~~/hooks/adminHooks/useOpenAttendance";
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 const AttendenceNFT = ({ apiKey, secretKey }: any) => {
-  console.log(apiKey, secretKey);
   // Getting lecture data
   const [lectureInfo, setLectureInfo] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);

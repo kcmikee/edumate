@@ -1,3 +1,5 @@
+"use client";
+
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useCallback, useEffect } from "react";
 import { ethers } from "ethers";
@@ -6,13 +8,14 @@ import { type BaseError, useWaitForTransactionReceipt, useWriteContract } from "
 import { OrganisationABI } from "~~/constants/abi/OrganisationABI";
 
 const useSignAttendance = (_lectureId: string) => {
-  const { data: hash, error, writeContract } = useWriteContract();
+  const { data: hash, error, writeContract, isPending } = useWriteContract();
 
-  const active_organisation = window.localStorage?.getItem("active_organisation");
+  const active_organisation = window.localStorage?.getItem("active_organisation") || "";
   const contract_address = JSON.parse(active_organisation as `0x${string}`);
 
   const signAttendance = useCallback(() => {
     const lectureIdBytes: any = ethers.encodeBytes32String(_lectureId);
+    console.log(_lectureId, contract_address);
     writeContract({
       address: contract_address,
       abi: OrganisationABI,
@@ -28,7 +31,7 @@ const useSignAttendance = (_lectureId: string) => {
   const toastId = "signAttendance";
 
   useEffect(() => {
-    if (isConfirming) {
+    if (isConfirming || isPending) {
       toast.success("Signing attendance...", {
         id: toastId,
         position: "top-right",
@@ -54,6 +57,7 @@ const useSignAttendance = (_lectureId: string) => {
     signAttendance,
     isConfirming,
     isConfirmed,
+    isPending,
   };
 };
 

@@ -56,7 +56,7 @@ const UserAttendenceNFT = () => {
                 <h2 className="text-sm font-medium text-gray-300">Topic: {list.topic}</h2>
                 <div className="flex items-center justify-between p-3 bg-gray-100 rounded">
                   <div className="flex flex-col">
-                    <h3 className="font-bold uppercase  text-color1">NFT ID</h3>
+                    <h3 className="font-bold uppercase text-color1">NFT ID</h3>
                     <h5 className="text-color2">{list.lectureId}</h5>
                   </div>
 
@@ -64,9 +64,9 @@ const UserAttendenceNFT = () => {
                     <DialogTrigger asChild>
                       <Button className="text-sm text-white bg-color1 hover:bg-color2">View</Button>
                     </DialogTrigger>
-                    <DialogContent className="sm:max-w-[425px]">
+                    <DialogContent className="sm:max-w-[425px] bg-white">
                       <DialogHeader>
-                        <DialogTitle>edumate+ Attendence</DialogTitle>
+                        <DialogTitle>edumate</DialogTitle>
                         <DialogDescription>Attendence Detail</DialogDescription>
                       </DialogHeader>
                       <main className="flex flex-col w-full gap-4 mb-3 overflow-y-auto md:flex-row">

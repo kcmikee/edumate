@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { FaucetButton, RainbowKitCustomConnectButton } from "../scaffold-eth";
 import { Button } from "../ui/button";
 import Logo from "./Logo";
 import MaxWrapper from "./MaxWrapper";
@@ -62,13 +63,10 @@ const OnboardingHeader = () => {
           </div>
 
           <div className="flex items-center justify-end gap-3">
-            <Button
-              onClick={walletConnect}
-              type="button"
-              className={`transition-all duration-200  flex items-center gap-1 ${isConnected && "bg-white text-color1 hover:bg-color1 hover:text-white border border-color1"} ${!isConnected && "bg-color1 text-white border border-color1 hover:bg-color2"} ${isConnected && Number(selectedNetworkId) !== SUPPORTED_CHAIN_ID && "bg-red-600 text-white border border-red-600 hover:bg-red-700"}`}
-            >
-              {isConnected ? <WalletConnected address={address} /> : <span>Connect Wallet</span>}
-            </Button>
+            <div className="flex items-center gap-4">
+              <RainbowKitCustomConnectButton />
+              <FaucetButton />
+            </div>
 
             <div className="md:hidden">
               <MobileNavToggler />

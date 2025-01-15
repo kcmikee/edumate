@@ -19,7 +19,7 @@ const Greeting = ({ name }: { name: string }) => {
   }, []);
 
   return (
-    <h2 className="ml-2 text-base font-medium capitalize">
+    <h2 className="ml-2 text-base font-medium capitalize text-color3">
       Good {timeOfDay}, {name}
     </h2>
   );

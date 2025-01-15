@@ -10,11 +10,7 @@ const Footer = () => {
   //     setYear(year.toString());
   //   }, []);
 
-  return (
-    <footer className="flex items-center justify-center w-full py-6 bg-color2">
-      {/* <p className="text-sm text-gray-300">©{year}  built on Base. All rights reserved.</p> */}
-    </footer>
-  );
+  return <footer className="flex items-center justify-center w-full py-6"></footer>;
 };
 
 export default Footer;

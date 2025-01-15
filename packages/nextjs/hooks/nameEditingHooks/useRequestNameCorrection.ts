@@ -7,7 +7,7 @@ import { OrganisationABI } from "~~/constants/abi/OrganisationABI";
 const useRequestNameCorrection = () => {
   const [isWriting, setIsWriting] = useState(false);
 
-  const { data: hash, error, writeContract } = useWriteContract();
+  const { data: hash, error, writeContract, isPending } = useWriteContract();
 
   const active_organisation = window.localStorage.getItem("active_organisation");
   const contract_address = JSON.parse(active_organisation as `0x${string}`);
@@ -56,6 +56,7 @@ const useRequestNameCorrection = () => {
     requestNameCorrection,
     isWriting,
     isConfirming,
+    isPending,
   };
 };
 export default useRequestNameCorrection;

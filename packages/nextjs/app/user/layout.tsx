@@ -13,7 +13,7 @@ export default function UserLayout({
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className=" bg-[#86836D]/10 lg:p-1.5">
+    <div className=" bg-white lg:p-1.5">
       {/* Page Wrapper Start  */}
       <div className="flex h-screen gap-1.5 overflow-hidden">
         {/* Sidebar Start */}
@@ -21,7 +21,7 @@ export default function UserLayout({
         {/* Sidebar End  */}
 
         {/* Content Area Start  */}
-        <div className="relative flex min-h-screen flex-1 flex-col justify-between overflow-y-auto overflow-x-hidden no-scrollbar">
+        <div className="relative flex flex-col justify-between flex-1 min-h-screen overflow-x-hidden overflow-y-auto no-scrollbar">
           <section>
             {/*  Header Start */}
             <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
@@ -29,7 +29,7 @@ export default function UserLayout({
 
             {/*  Main Content Start */}
             <main>
-              <div className="mx-auto max-w-screen-2xl pt-4 pb-6 md:pt-4 md:pb-10 2xl:p-10">
+              <div className="pt-4 pb-6 mx-auto max-w-screen-2xl md:pt-4 md:pb-10 2xl:p-10">
                 <section className="w-full px-1.5">{children}</section>
               </div>
             </main>

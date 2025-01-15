@@ -47,9 +47,9 @@ export default function SubmitAttendanceID() {
         </ol>
       </div>
       <Card className="w-[90%] md:w-[50%] shadow-lg mt-20 mx-auto bg-gray-200/70 border-color2/20 hover:border-color2/40">
-        <form action="" onSubmit={handleOnSubmit}>
+        <div>
           <CardHeader>
-            <CardTitle className="capitalize text-bg-color2/20">edumate + student form</CardTitle>
+            <CardTitle className="capitalize text-bg-color2/20">Attendance</CardTitle>
           </CardHeader>
           <CardContent>
             <CardDescription className="mb-3">Enter ID</CardDescription>
@@ -65,9 +65,8 @@ export default function SubmitAttendanceID() {
           </CardContent>
           <div className="flex justify-end ">
             <CardFooter className="gap-2">
-              <Button className="transition-all ease-in-out bg-color2 hover:bg-color1">Cancel</Button>
               <Button
-                className="transition-all ease-in-out bg-color2 hover:bg-color1"
+                className="text-black transition-all ease-in-out"
                 onClick={handleOnSubmit}
                 disabled={isConfirming}
               >
@@ -75,7 +74,7 @@ export default function SubmitAttendanceID() {
               </Button>
             </CardFooter>
           </div>
-        </form>
+        </div>
       </Card>
     </div>
   );

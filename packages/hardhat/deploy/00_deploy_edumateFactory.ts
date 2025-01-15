@@ -21,7 +21,7 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   */
   const { deployer } = await hre.getNamedAccounts();
   const { deploy } = hre.deployments;
-  const cerficateFactory = "0xEb8957dc1Df6c6d11E58F8909CAb5D7DccED99d4";
+  const cerficateFactory = "0xEb8957dc1Df6c6d11E58F8909CAb5D7DccED99d4"; //sepolia
 
   await deploy("EdumateFactory", {
     from: deployer,

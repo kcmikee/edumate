@@ -1,13 +1,12 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import Link from "next/link";
 import { FaFileSignature } from "react-icons/fa6";
 import { GiPieChart } from "react-icons/gi";
 import { SiGoogleclassroom } from "react-icons/si";
 import { TbAlarmAverage, TbArrowRotaryLastLeft } from "react-icons/tb";
 import { useAccount } from "wagmi";
-import { Calendar } from "~~/components/ui/calendar";
 import { Card, CardContent, CardHeader } from "~~/components/ui/card";
 import useGetAttendanceRatio from "~~/hooks/studentHooks/useGetAttendanceRatio";
 import useGetSignedAttendanceImages from "~~/hooks/studentHooks/useGetSignedAttendanceImages";
@@ -23,7 +22,6 @@ interface Statistic {
 }
 
 const Statistics = () => {
-  const [date, setDate] = useState<Date | undefined>(new Date());
   const { address } = useAccount();
   const studentName = useGetStudentName(address);
   const attendanceRatio = useGetAttendanceRatio(address);
@@ -69,12 +67,12 @@ const Statistics = () => {
     <>
       <section className="flex justify-between mb-6">
         <div>
-          <h1 className="text-xl font-bold">Welcome back, {studentName}</h1>
-          <p className="text-xs capitalize">welcome to edumate+ dashboard</p>
+          <h1 className="text-xl font-bold text-eduBlack">Welcome back, {studentName}</h1>
+          <p className="text-xs capitalize text-eduBlack">welcome to edumate dashboard</p>
         </div>
       </section>
       <section>
-        <h1 className="mb-2">Overview</h1>
+        <h1 className="mb-2 text-eduBlack">Overview</h1>
       </section>
       <section className="grid w-full gap-8 md:grid-cols-3 ">
         <main className="w-full md:col-span-2">
@@ -128,9 +126,6 @@ const Statistics = () => {
             )}
           </section>
         </main>
-        <aside className="w-full p-6 bg-white rounded-md  h-[350px] shadow-lg">
-          <Calendar mode="single" selected={date} onSelect={setDate} className="h-full border rounded-md" />
-        </aside>
       </section>
     </>
   );

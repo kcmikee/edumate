@@ -60,7 +60,7 @@ const SideBar = ({
   return (
     <aside
       ref={sidebar}
-      className={`absolute font-barlow left-0 top-0 z-[9999] flex h-screen w-72 flex-col overflow-y-hidden bg-color2 duration-300 ease-linear lg:static lg:translate-x-0 lg:rounded-lg ${
+      className={`absolute font-barlow left-0 top-0 z-[9999] flex h-screen w-72 flex-col overflow-y-hidden bg-eduBlack duration-300 ease-linear lg:static lg:translate-x-0 lg:rounded-lg ${
         sidebarOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
@@ -68,8 +68,7 @@ const SideBar = ({
       <div className="flex flex-col gap-2 font-barlow px-6 py-8 lg:py-6.5">
         <div className="flex items-start justify-between gap-2 ">
           <Link href={`/user`} className="flex items-end">
-            <PiStudentFill className="text-3xl text-gray-100 md:text-4xl" />
-            <span className="font-semibold text-gray-200 md:text-xl">edumate+</span>
+            <span className="font-semibold text-gray-200 md:text-xl">edumate</span>
           </Link>
 
           <button
@@ -111,11 +110,6 @@ const SideBar = ({
             </ul>
           </div>
           {/* <!-- Sidebar Footer --> */}
-
-          <div className="flex items-center gap-4">
-            <RainbowKitCustomConnectButton />
-            <FaucetButton />
-          </div>
         </nav>
         {/* <!-- Sidebar Menu --> */}
       </div>
