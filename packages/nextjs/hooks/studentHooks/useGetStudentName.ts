@@ -1,54 +1,62 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { useBlockNumber, useReadContract } from "wagmi";
 import { OrganisationABI } from "~~/constants/abi/OrganisationABI";
 
-const useGetStudentName = (_userAddress: any) => {
-  const [studentName, setStudentName] = useState("");
+type Address = `0x${string}`;
 
-  const active_organisation = typeof window !== "undefined" ? window.localStorage?.getItem("active_organisation") : "";
-  const contract_address = JSON.parse(active_organisation as `0x${string}`);
-
+const useGetStudentName = (userAddress: Address) => {
   const queryClient = useQueryClient();
   const { data: blockNumber } = useBlockNumber({ watch: true });
+  const [contractAddress, setContractAddress] = useState<Address | null>(null);
+
+  // Safely get contract address from localStorage on client-side only
+  useEffect(() => {
+    try {
+      const activeOrg = localStorage.getItem("active_organisation");
+      if (activeOrg) {
+        setContractAddress(JSON.parse(activeOrg) as Address);
+      }
+    } catch (error) {
+      console.error("Error reading from localStorage:", error);
+    }
+  }, []);
 
   const {
-    data: nameOfStudent,
-    error: nameOfStudentError,
-
+    data: studentName,
+    error,
     queryKey,
   } = useReadContract({
-    address: contract_address,
+    // @ts-expect-error - Type 'string | undefined' is not assignable to type 'Address'.
+    address: contractAddress,
     abi: OrganisationABI,
     functionName: "getStudentName",
-    args: [_userAddress],
+    args: [userAddress],
+    query: {
+      enabled: Boolean(contractAddress) && Boolean(userAddress),
+    },
   });
 
+  // Invalidate query when block number changes
   useEffect(() => {
-    queryClient.invalidateQueries({ queryKey });
+    if (queryKey) {
+      queryClient.invalidateQueries({ queryKey });
+    }
   }, [blockNumber, queryClient, queryKey]);
 
-  const fetchStudentName = useCallback(async () => {
-    if (!nameOfStudent) return;
-    setStudentName(nameOfStudent.toString());
-  }, [nameOfStudent]);
-
+  // Handle errors
   useEffect(() => {
-    fetchStudentName();
-  }, [fetchStudentName]);
-
-  useEffect(() => {
-    if (nameOfStudentError) {
-      toast.error(nameOfStudentError.message, {
+    if (error) {
+      toast.error(error.message, {
         position: "top-right",
       });
     }
-  }, [nameOfStudentError]);
+  }, [error]);
 
-  return studentName;
+  return studentName?.toString() ?? "";
 };
 
 export default useGetStudentName;

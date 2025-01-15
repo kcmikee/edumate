@@ -3,6 +3,7 @@
 import { CSSProperties, useState } from "react";
 import Image from "next/image";
 import sample from "../../public/admin/listsample.png";
+import LoadingModal from "../LoadingModal";
 import { Button } from "../ui/button";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { formatFileSize, lightenDarkenColor, useCSVReader } from "react-papaparse";
@@ -172,6 +173,13 @@ const Upload = () => {
           </Button>
         </div>
       </main>
+      <LoadingModal
+        text="Uploading..."
+        onClose={() => {
+          // no-op
+        }}
+        isOpen={isWritingtoStudents || isConfirmingtoStudents || isWritingtoStaff || isConfirmingtoStaff}
+      />
     </section>
   );
 };

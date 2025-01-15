@@ -1,12 +1,13 @@
 "use client";
 
-// import { useCallback, useEffect } from "react";
-// import { useRouter } from "next/navigation";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useCallback, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Greeting from "./Greeting";
-// import { toast } from "sonner";
+import { toast } from "sonner";
 import { useAccount } from "wagmi";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
-// import useVerifyStudent from "~~/hooks/layoutProtectionHook/useVerifyStudent";
+import useVerifyStudent from "~~/hooks/layoutProtectionHook/useVerifyStudent";
 import useGetStudentName from "~~/hooks/studentHooks/useGetStudentName";
 
 const Header = ({
@@ -16,30 +17,28 @@ const Header = ({
   sidebarOpen: boolean;
   setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const {
-    address,
-    // , isConnected
-  } = useAccount();
+  const { address, isConnected } = useAccount();
 
-  // const router = useRouter();
+  const router = useRouter();
 
-  // const isUserStudent = useVerifyStudent(address);
+  const isUserStudent = useVerifyStudent(address);
 
-  // const change = useCallback(async () => {
-  //   if (!isConnected) {
-  //     router.push("/programme");
-  //     return toast.error("Please connect wallet", { position: "top-right" });
-  //   } else if (!isUserStudent) {
-  //     router.push("/programme");
-  //     return toast.error("ACCESS NOT ALLOWED !", { position: "top-right" });
-  //   }
-  // }, [isConnected, router, isUserStudent]);
+  const change = useCallback(async () => {
+    // if (!isConnected) {
+    //   router.push("/programme");
+    //   return toast.error("Please connect wallet", { position: "top-right" });
+    // } else
+    if (!isUserStudent) {
+      router.push("/programme");
+      return toast.error("ACCESS NOT ALLOWED !", { position: "top-right" });
+    }
+  }, [isConnected, router, isUserStudent]);
 
-  // useEffect(() => {
-  //   change();
-  // }, [change, isConnected, isUserStudent]);
+  useEffect(() => {
+    change();
+  }, [change, isConnected, isUserStudent]);
 
-  const studentName = useGetStudentName(address);
+  const studentName = useGetStudentName(address as `0x${string}`);
 
   return (
     <header className="sticky top-0 z-[999] flex w-full lg:rounded-lg">

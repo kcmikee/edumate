@@ -3,12 +3,12 @@ import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { useBlockNumber, useReadContract } from "wagmi";
 import { OrganisationABI } from "~~/constants/abi/OrganisationABI";
+import { getLocalStorage } from "~~/utils/localStorage";
 
 const useGetProgramStatus = () => {
   const [status, setStatus] = useState<boolean>();
 
-  const active_organisation = window.localStorage?.getItem("active_organisation");
-  const contract_address = JSON.parse(active_organisation as `0x${string}`);
+  const contract_address = getLocalStorage("active_organisation");
 
   const queryClient = useQueryClient();
   const { data: blockNumber } = useBlockNumber({ watch: true });

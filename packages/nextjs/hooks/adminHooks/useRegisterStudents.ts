@@ -5,14 +5,14 @@ import { useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
 import { type BaseError, useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { OrganisationABI } from "~~/constants/abi/OrganisationABI";
+import { getLocalStorage } from "~~/utils/localStorage";
 
 const useRegisterStudents = (data: any[]) => {
   const [isWriting, setIsWriting] = useState(false);
 
   const { data: hash, error, writeContract } = useWriteContract();
 
-  const active_organisation = window.localStorage?.getItem("active_organisation");
-  const contract_address = JSON.parse(active_organisation as `0x${string}`);
+  const contract_address = getLocalStorage("active_organisation");
 
   const registerStudents = useCallback(() => {
     setIsWriting(true);
@@ -55,11 +55,13 @@ const useRegisterStudents = (data: any[]) => {
     if (error) {
       toast.error((error as BaseError).shortMessage || error.message, {
         id: toastId,
-        position: "top-right",
+        position: "bottom-right",
       });
       setIsWriting(false);
     }
   }, [isConfirmed, error, isConfirming]);
+
+  console.log(error);
 
   return {
     registerStudents,

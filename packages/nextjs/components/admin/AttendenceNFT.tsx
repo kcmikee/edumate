@@ -29,6 +29,7 @@ import useCloseAttendance from "~~/hooks/adminHooks/useCloseAttendance";
 import useCreateAttendance from "~~/hooks/adminHooks/useCreateAttendance";
 import useEditLectureTopic from "~~/hooks/adminHooks/useEditLectureTopic";
 import useOpenAttendance from "~~/hooks/adminHooks/useOpenAttendance";
+import { getLocalStorage } from "~~/utils/localStorage";
 
 /* eslint-disable @next/next/no-img-element */
 
@@ -44,8 +45,8 @@ const AttendenceNFT = ({ apiKey, secretKey }: any) => {
   const queryClient = useQueryClient();
   const { data: blockNumber } = useBlockNumber({ watch: true });
 
-  const active_organisation = window.localStorage?.getItem("active_organisation");
-  const contract_address = JSON.parse(active_organisation as `0x${string}`);
+  const contract_address = getLocalStorage("active_organisation");
+  // const contract_address = JSON.parse(active_organisation as `0x${string}`);
 
   const {
     data: listOfLectureIds,

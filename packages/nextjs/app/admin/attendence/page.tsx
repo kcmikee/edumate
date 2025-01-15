@@ -1,4 +1,8 @@
-import AttendenceNFT from "~~/components/admin/AttendenceNFT";
+import dynamic from "next/dynamic";
+
+// import AttendenceNFT from "~~/components/admin/AttendenceNFT";
+
+const AttendenceNFT = dynamic(() => import("~~/components/admin/AttendenceNFT"), { ssr: false });
 
 export default function Attendence() {
   const apiKey = process.env.NEXT_PUBLIC_PINATA_API_KEY;

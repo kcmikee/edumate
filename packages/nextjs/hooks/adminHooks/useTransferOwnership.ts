@@ -6,12 +6,12 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { type BaseError, useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { OrganisationABI } from "~~/constants/abi/OrganisationABI";
+import { getLocalStorage } from "~~/utils/localStorage";
 
 const useTransferOwnership = (newModerator: any) => {
   const { data: hash, error, writeContract } = useWriteContract();
 
-  const active_organisation = window.localStorage?.getItem("active_organisation");
-  const contract_address = JSON.parse(active_organisation as `0x${string}`);
+  const contract_address = getLocalStorage("active_organisation");
 
   const router = useRouter();
 

@@ -1,4 +1,7 @@
-import Statistics from "~~/components/user/Statistics";
+// import Statistics from "~~/components/user/Statistics";
+import dynamic from "next/dynamic";
+
+const Statistics = dynamic(() => import("~~/components/user/Statistics"), { ssr: false });
 
 export default function UserDashboard() {
   return (

@@ -2,12 +2,12 @@ import { useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
 import { useReadContract } from "wagmi";
 import { OrganisationABI } from "~~/constants/abi/OrganisationABI";
+import { getLocalStorage } from "~~/utils/localStorage";
 
 const useVerifyAdmin = (_userAddress: any) => {
   const [isAdmin, setIsAdmin] = useState<boolean>(true);
 
-  const active_organisation = window.localStorage?.getItem("active_organisation");
-  const contract_address = JSON.parse(active_organisation as `0x${string}`);
+  const contract_address = getLocalStorage("active_organisation");
 
   const { data: adminStatus, error: adminStatusError } = useReadContract({
     address: contract_address,

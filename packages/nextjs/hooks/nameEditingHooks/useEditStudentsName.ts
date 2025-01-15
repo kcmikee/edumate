@@ -9,12 +9,16 @@ const useEditStudentsName = (name: string) => {
   const { address } = useAccount();
   const { data: hash, error, writeContract } = useWriteContract();
 
-  const active_organisation = window.localStorage.getItem("active_organisation");
-  const contract_address = JSON.parse(active_organisation as `0x${string}`);
+  const active_organisation = typeof window !== "undefined" ? window.localStorage.getItem("active_organisation") : null;
+  const contract_address = active_organisation ? JSON.parse(active_organisation as `0x${string}`) : null;
 
   const editStudentsName = useCallback(() => {
     if (!address) {
       toast.error("No connected address found");
+      return;
+    }
+
+    if (!contract_address) {
       return;
     }
 

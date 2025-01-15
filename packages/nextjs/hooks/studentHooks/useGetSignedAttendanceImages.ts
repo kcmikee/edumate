@@ -7,6 +7,7 @@ import { useBlockNumber, useReadContract } from "wagmi";
 import { OrganisationABI } from "~~/constants/abi/OrganisationABI";
 import { getOrgContract } from "~~/constants/contracts";
 import { readOnlyProvider } from "~~/constants/provider";
+import { getLocalStorage } from "~~/utils/localStorage";
 
 const useGetSignedAttendanceImages = (_studentAddress: any) => {
   const [signedAttendanceImages, setSignedAttendanceImages] = useState<any[]>([]);
@@ -15,8 +16,7 @@ const useGetSignedAttendanceImages = (_studentAddress: any) => {
   const queryClient = useQueryClient();
   const { data: blockNumber } = useBlockNumber({ watch: true });
 
-  const active_organisation = window.localStorage?.getItem("active_organisation");
-  const contract_address = JSON.parse(active_organisation as `0x${string}`);
+  const contract_address = getLocalStorage("active_organisation");
 
   const {
     data: attendedLectureIds,
@@ -36,7 +36,7 @@ const useGetSignedAttendanceImages = (_studentAddress: any) => {
 
   const fetchSignedAttendanceImages = useCallback(async () => {
     if (!attendedLectureIds) return;
-
+    if (!contract_address) return;
     try {
       const formattedRes = attendedLectureIds.map((id: any) => id.toString());
 

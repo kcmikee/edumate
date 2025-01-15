@@ -9,10 +9,11 @@ const useRequestNameCorrection = () => {
 
   const { data: hash, error, writeContract, isPending } = useWriteContract();
 
-  const active_organisation = window.localStorage.getItem("active_organisation");
-  const contract_address = JSON.parse(active_organisation as `0x${string}`);
+  const active_organisation = typeof window !== "undefined" ? window.localStorage.getItem("active_organisation") : null;
+  const contract_address = active_organisation ? JSON.parse(active_organisation as `0x${string}`) : null;
 
   const requestNameCorrection = useCallback(() => {
+    if (!contract_address) return;
     setIsWriting(true);
     writeContract({
       address: contract_address,

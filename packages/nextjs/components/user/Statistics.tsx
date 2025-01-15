@@ -23,7 +23,7 @@ interface Statistic {
 
 const Statistics = () => {
   const { address } = useAccount();
-  const studentName = useGetStudentName(address);
+  const studentName = useGetStudentName(address as `0x${string}`);
   const attendanceRatio = useGetAttendanceRatio(address);
   const { list } = useGetStudentScore(address);
 

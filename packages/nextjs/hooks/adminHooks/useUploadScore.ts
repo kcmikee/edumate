@@ -5,6 +5,7 @@ import axios from "axios";
 import { toast } from "sonner";
 import { type BaseError, useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { OrganisationABI } from "~~/constants/abi/OrganisationABI";
+import { getLocalStorage } from "~~/utils/localStorage";
 
 const useUploadScore = (testId: any, data: any[], apiKey: any, secretKey: any) => {
   const [isWriting, setIsWriting] = useState(false);
@@ -19,8 +20,7 @@ const useUploadScore = (testId: any, data: any[], apiKey: any, secretKey: any) =
   console.log(scoreURI);
 
   //getting the contract address of the organisation
-  const active_organisation = window.localStorage?.getItem("active_organisation");
-  const contract_address = JSON.parse(active_organisation as `0x${string}`);
+  const contract_address = getLocalStorage("active_organisation");
 
   //Converting the array to json, sending it to IPFS and getting the score URI/CID
   const getJson = useCallback(async () => {

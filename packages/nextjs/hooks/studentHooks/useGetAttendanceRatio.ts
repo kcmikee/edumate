@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { useBlockNumber, useReadContract } from "wagmi";
 import { OrganisationABI } from "~~/constants/abi/OrganisationABI";
+import { getLocalStorage } from "~~/utils/localStorage";
 
 const useGetAttendanceRatio = (student_address: any) => {
   const queryClient = useQueryClient();
@@ -11,8 +12,7 @@ const useGetAttendanceRatio = (student_address: any) => {
   });
   const [isLoading, setIsLoading] = useState(false);
 
-  const active_organisation = window.localStorage?.getItem("active_organisation");
-  const contract_address = JSON.parse(active_organisation as `0x${string}`);
+  const contract_address = getLocalStorage("active_organisation");
 
   const { data: blockNumber } = useBlockNumber({ watch: true });
 

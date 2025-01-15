@@ -8,9 +8,7 @@ import { FiSettings } from "react-icons/fi";
 import { GrServices } from "react-icons/gr";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { MdEventSeat } from "react-icons/md";
-import { PiStudentFill } from "react-icons/pi";
 import { RxDashboard } from "react-icons/rx";
-import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { sideLinks } from "~~/utils/Sidebar";
 
 const SideBar = ({

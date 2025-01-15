@@ -5,6 +5,7 @@ import { useBlockNumber, useReadContract } from "wagmi";
 import { OrganisationABI } from "~~/constants/abi/OrganisationABI";
 import { getOrgContract } from "~~/constants/contracts";
 import { readOnlyProvider } from "~~/constants/provider";
+import { getLocalStorage } from "~~/utils/localStorage";
 
 const useGetMentorOnDuty = () => {
   const [mentorOnDuty, setMentorOnDuty] = useState<string>("");
@@ -12,8 +13,7 @@ const useGetMentorOnDuty = () => {
   const queryClient = useQueryClient();
   const { data: blockNumber } = useBlockNumber({ watch: true });
 
-  const active_organisation = window.localStorage?.getItem("active_organisation");
-  const contract_address = JSON.parse(active_organisation as `0x${string}`);
+  const contract_address = getLocalStorage("active_organisation");
 
   const {
     data: mentor,

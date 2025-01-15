@@ -5,6 +5,422 @@
 import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 
 const deployedContracts = {
+  10: {
+    EdumateFactory: {
+      address: "0x7a9F56B9b049A7Cf026E0C173Cc2C60919c73986",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "certFactory",
+              type: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          inputs: [],
+          name: "Admin",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "Organisations",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "string",
+              name: "_organisation",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_cohort",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_uri",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_adminName",
+              type: "string",
+            },
+          ],
+          name: "createorganisation",
+          outputs: [
+            {
+              internalType: "address",
+              name: "eduOrganisation",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "Nft",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "mentorsSpok",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "certificate",
+              type: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "getOrganizations",
+          outputs: [
+            {
+              internalType: "address[]",
+              name: "",
+              type: "address[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_userAddress",
+              type: "address",
+            },
+          ],
+          name: "getUserOrganisatons",
+          outputs: [
+            {
+              internalType: "address[]",
+              name: "",
+              type: "address[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "memberOrganisations",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              components: [
+                {
+                  internalType: "address",
+                  name: "_address",
+                  type: "address",
+                },
+                {
+                  internalType: "string",
+                  name: "_name",
+                  type: "string",
+                },
+              ],
+              internalType: "struct individual[]",
+              name: "_individual",
+              type: "tuple[]",
+            },
+          ],
+          name: "register",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address[]",
+              name: "_individual",
+              type: "address[]",
+            },
+          ],
+          name: "revoke",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          name: "studentOrganisationIndex",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "totalUsers",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          name: "uniqueStudent",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          name: "validOrganisation",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    certificateFactory: {
+      address: "0x79f8b7f45EAe8De90C5EC785DFCF3a7096210400",
+      abi: [
+        {
+          inputs: [],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          inputs: [
+            {
+              internalType: "string",
+              name: "Name",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "Symbol",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "Uri",
+              type: "string",
+            },
+            {
+              internalType: "address",
+              name: "_Admin",
+              type: "address",
+            },
+          ],
+          name: "completePackage",
+          outputs: [
+            {
+              internalType: "address",
+              name: "newCertificateAdd",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "newSchoolsNFT",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "newMentorsSpok",
+              type: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "string",
+              name: "Name",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "Symbol",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "Uri",
+              type: "string",
+            },
+            {
+              internalType: "address",
+              name: "_Admin",
+              type: "address",
+            },
+          ],
+          name: "createAttendanceNft",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "string",
+              name: "Name",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "Symbol",
+              type: "string",
+            },
+            {
+              internalType: "address",
+              name: "institution",
+              type: "address",
+            },
+          ],
+          name: "createCertificateNft",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "string",
+              name: "Name",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "Symbol",
+              type: "string",
+            },
+            {
+              internalType: "address",
+              name: "institution",
+              type: "address",
+            },
+          ],
+          name: "createMentorsSpok",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+  },
   31337: {
     EdumateFactory: {
       address: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
@@ -492,7 +908,28 @@ const deployedContracts = {
             },
           ],
           name: "createorganisation",
-          outputs: [],
+          outputs: [
+            {
+              internalType: "address",
+              name: "eduOrganisation",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "Nft",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "mentorsSpok",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "certificate",
+              type: "address",
+            },
+          ],
           stateMutability: "nonpayable",
           type: "function",
         },

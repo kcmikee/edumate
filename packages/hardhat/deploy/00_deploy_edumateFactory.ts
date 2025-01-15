@@ -21,7 +21,8 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   */
   const { deployer } = await hre.getNamedAccounts();
   const { deploy } = hre.deployments;
-  const cerficateFactory = "0xEb8957dc1Df6c6d11E58F8909CAb5D7DccED99d4"; //sepolia
+  // const cerficateFactory = "0xEb8957dc1Df6c6d11E58F8909CAb5D7DccED99d4"; //sepolia
+  const cerficateFactory = "0x79f8b7f45EAe8De90C5EC785DFCF3a7096210400"; //optimism
 
   await deploy("EdumateFactory", {
     from: deployer,
@@ -46,3 +47,4 @@ export default deployYourContract;
 deployYourContract.tags = ["edumateFactory"];
 
 // deploy at 0xcc64979568dB15Eb171B45779b98350E9E66E565 - sepolia
+// deploy at 0x7a9F56B9b049A7Cf026E0C173Cc2C60919c73986 - optimism

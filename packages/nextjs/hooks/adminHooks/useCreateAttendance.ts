@@ -6,12 +6,12 @@ import { ethers } from "ethers";
 import { toast } from "sonner";
 import { type BaseError, useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { OrganisationABI } from "~~/constants/abi/OrganisationABI";
+import { getLocalStorage } from "~~/utils/localStorage";
 
 const useCreateAttendance = (_lectureId: string, _uri: string, _topic: string) => {
   const { data: hash, error, writeContract } = useWriteContract();
 
-  const active_organisation = window.localStorage?.getItem("active_organisation");
-  const contract_address = JSON.parse(active_organisation as `0x${string}`);
+  const contract_address = getLocalStorage("active_organisation");
 
   const createAttendance = useCallback(() => {
     const lectureIdBytes: any = ethers.encodeBytes32String(_lectureId);

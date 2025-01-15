@@ -3,24 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FaucetButton, RainbowKitCustomConnectButton } from "../scaffold-eth";
-import { Button } from "../ui/button";
 import Logo from "./Logo";
 import MaxWrapper from "./MaxWrapper";
 import { MobileNavToggler } from "./MobileNavToggler";
-import { WalletConnected } from "./WalletConnected";
 import { motion, useScroll, useSpring } from "framer-motion";
-import { useAccount, useSwitchChain } from "wagmi";
 import { cn } from "~~/lib/utils";
 import { navLinks } from "~~/utils/NavLinks";
 
 const OnboardingHeader = () => {
-  const SUPPORTED_CHAIN_ID = 11155111;
-  const { address, isConnected } = useAccount();
-
-  const { switchChain } = useSwitchChain();
-
-  const selectedNetworkId = SUPPORTED_CHAIN_ID;
-
   const pathname = usePathname();
   const { scrollYProgress } = useScroll();
 
@@ -29,14 +19,6 @@ const OnboardingHeader = () => {
     damping: 30,
     restDelta: 0.001,
   });
-
-  const walletConnect = () => {
-    if (!isConnected) {
-      open();
-    } else if (isConnected && Number(selectedNetworkId) !== SUPPORTED_CHAIN_ID) {
-      switchChain({ chainId: SUPPORTED_CHAIN_ID });
-    }
-  };
 
   return (
     <header className="w-full">

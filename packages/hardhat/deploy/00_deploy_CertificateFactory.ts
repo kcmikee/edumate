@@ -45,3 +45,4 @@ export default deployYourContract;
 deployYourContract.tags = ["certificateFactory"];
 
 // deploy at 0xEb8957dc1Df6c6d11E58F8909CAb5D7DccED99d4 -sepolia
+// deploy at 0x79f8b7f45EAe8De90C5EC785DFCF3a7096210400 - optimism

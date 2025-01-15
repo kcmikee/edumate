@@ -1,15 +1,14 @@
 "use client";
 
-// import { useCallback, useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import Link from "next/link";
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Greeting from "./Greeting";
-// import { toast } from "sonner";
+import { toast } from "sonner";
 import { useAccount } from "wagmi";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import useGetMentorName from "~~/hooks/adminHooks/useGetMentorName";
-
-// import useVerifyAdmin from "~~/hooks/layoutProtectionHook/useVerifyAdmin";
+import useVerifyAdmin from "~~/hooks/layoutProtectionHook/useVerifyAdmin";
 
 const Header = ({
   sidebarOpen,
@@ -23,29 +22,30 @@ const Header = ({
     // isConnected
   } = useAccount();
 
-  // const isUserAdmin = useVerifyAdmin(address);
+  const isUserAdmin = useVerifyAdmin(address);
 
-  // const router = useRouter();
+  const router = useRouter();
 
-  // const change = useCallback(async () => {
-  //   if (!isConnected) {
-  //     router.push("/programme");
-  //     return toast.error("Please connect wallet", { position: "top-right" });
-  //   } else if (!isUserAdmin) {
-  //     router.push("/programme");
-  //     return toast.error("ACCESS NOT ALLOWED !", { position: "top-right" });
-  //   }
-  // }, [isConnected, router, isUserAdmin]);
+  const change = useCallback(async () => {
+    // if (!isConnected) {
+    //   router.push("/programme");
+    //   return toast.error("Please connect wallet", { position: "top-right" });
+    // } else
+    if (!isUserAdmin) {
+      router.push("/programme");
+      return toast.error("ACCESS NOT ALLOWED !", { position: "top-right" });
+    }
+  }, [router, isUserAdmin]);
 
-  // useEffect(() => {
-  //   change();
-  // }, [change, isConnected, isUserAdmin]);
+  useEffect(() => {
+    change();
+  }, [change, isUserAdmin]);
 
   const adminName = useGetMentorName(address);
 
   return (
     <header className="sticky top-0 z-[99] flex w-full  lg:rounded-lg drop-shadow-1">
-      <div className="relative flex items-center justify-between flex-grow px-4 py-4 md:px-2 2xl:px-11 before:absolute before:bottom-0 before:left-0 before:w-full before:h-px before:bg-gradient-to-l before:from-color1 before:to-color2">
+      <div className="relative flex items-center justify-between flex-grow px-4 py-4 bg-white shadow-md md:px-2 2xl:px-11 before:absolute before:bottom-0 before:left-0 before:w-full before:h-px">
         <div className="flex items-center gap-3 sm:gap-4 lg:hidden">
           {/* <!-- Hamburger Toggle BTN --> */}
           <button
